@@ -3,7 +3,7 @@ import { getKota } from "@/app/lib/data";
 
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0] ?? "";
-  const domain = process.env.NEXT_PUBLIC_DOMAIN ?? "ruangamank3.id";
+  const domain = process.env.NEXT_PUBLIC_DOMAIN ?? "gardak3.com";
 
   const addDebugHeaders = (response: NextResponse, slugVal?: string, targetVal?: string) => {
     response.headers.set("x-debug-host", host);
