@@ -10,6 +10,7 @@ import { MapEmbed } from "@/components/MapEmbed";
 import { Navbar } from "@/components/Navbar";
 import { RelatedServices } from "@/components/RelatedServices";
 import { WhatsAppFloatButton } from "@/components/WhatsAppFloatButton";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import {
   articleHeroImage,
   articleSecondaryImage,
@@ -315,7 +316,7 @@ export default async function JasaDetailPage({
                     target="_blank"
                     rel="noreferrer"
                   >
-                    Chat via WhatsApp ↗
+                    <WhatsAppIcon size={18} fill="#25d366" /> Chat via WhatsApp ↗
                   </a>
                 </div>
 

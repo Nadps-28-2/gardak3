@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Kota } from "@/app/lib/data";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 interface HeroProps {
   place?: Kota;
@@ -45,7 +46,7 @@ export function Hero({ place, title, subtitle }: HeroProps) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Konsultasi WhatsApp <span>↗</span>
+              <WhatsAppIcon size={18} fill="#25d366" /> Konsultasi WhatsApp <span>↗</span>
             </a>
             <Link className="text-link" href={place ? `${root}/pelatihan` : "#layanan"}>
               Jelajahi Program K3 ↘

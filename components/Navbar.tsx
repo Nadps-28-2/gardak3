@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Kota } from "@/app/lib/data";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 
 export function Navbar({ place }: { place?: Kota }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,7 @@ export function Navbar({ place }: { place?: Kota }) {
             target="_blank"
             rel="noreferrer"
           >
-            Konsultasi <span>↗</span>
+            <WhatsAppIcon size={16} fill="#25d366" /> Konsultasi <span>↗</span>
           </a>
 
           {/* Mobile Hamburger Button */}
@@ -94,7 +95,7 @@ export function Navbar({ place }: { place?: Kota }) {
                 rel="noreferrer"
                 onClick={closeMenu}
               >
-                Konsultasi WhatsApp ↗
+                <WhatsAppIcon size={18} fill="#25d366" /> Konsultasi WhatsApp ↗
               </a>
             </div>
           </div>

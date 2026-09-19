@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next";
 import { kota, layanan } from "@/app/lib/data";
 
-const domain = process.env.NEXT_PUBLIC_DOMAIN ?? "https://gardak3.com";
+const domain = process.env.NEXT_PUBLIC_DOMAIN ?? "https://gardak3.com/";
 
 export async function generateSitemaps() {
   // Split into 3 sitemap files to stay under Google's 50,000 URL limit per file
