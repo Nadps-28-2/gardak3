@@ -5,14 +5,6 @@ export function middleware(request: NextRequest) {
   const host = request.headers.get("host")?.split(":")[0] ?? "";
   const domain = process.env.NEXT_PUBLIC_DOMAIN ?? "gardak3.com";
 
-  const addDebugHeaders = (response: NextResponse, slugVal?: string, targetVal?: string) => {
-    response.headers.set("x-debug-host", host);
-    response.headers.set("x-debug-subdomain", slugVal || "none");
-    response.headers.set("x-debug-target", targetVal || "no-rewrite");
-    response.headers.set("x-debug-mw-ran", "yes");
-    return response;
-  };
-
   if (
     !host ||
     host === "localhost" ||
@@ -20,7 +12,7 @@ export function middleware(request: NextRequest) {
     host === domain ||
     host === `www.${domain}`
   ) {
-    return addDebugHeaders(NextResponse.next());
+    return NextResponse.next();
   }
 
   let slug = "";
@@ -31,25 +23,25 @@ export function middleware(request: NextRequest) {
   }
 
   if (!slug) {
-    return addDebugHeaders(NextResponse.next());
+    return NextResponse.next();
   }
 
   const place = getKota(slug);
   if (!place) {
-    return addDebugHeaders(new NextResponse("Not Found", { status: 404 }), slug, "404-not-found");
+    return new NextResponse("Not Found", { status: 404 });
   }
 
   const pathname = request.nextUrl.pathname;
 
   if (pathname.startsWith(`/kota/${slug}`)) {
-    return addDebugHeaders(NextResponse.next(), slug, "already-kota-prefix");
+    return NextResponse.next();
   }
 
   const targetPath = `/kota/${slug}${pathname === "/" ? "" : pathname}`;
 
   const url = request.nextUrl.clone();
   url.pathname = targetPath;
-  return addDebugHeaders(NextResponse.rewrite(url), slug, targetPath);
+  return NextResponse.rewrite(url);
 }
 
 export const config = {
