@@ -1,0 +1,3 @@
+import { whatsappUrl } from "@/app/lib/data";
+
+export function ContactCTA({ label = "Bicarakan kebutuhan K3 Anda" }: { label?: string }) { return <section className="contact-cta" id="kontak"><div><span className="eyebrow">Siap mulai?</span><h2>{label}</h2><p>Ceritakan kebutuhan tim atau organisasi Anda. Kami bantu memilih format, peserta, dan jadwal yang paling masuk akal.</p></div><a className="button button-light" href={whatsappUrl("Halo, saya ingin konsultasi kebutuhan K3.")}>Chat WhatsApp <span>↗</span></a></section>; }
